@@ -48,7 +48,6 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 :noremap <Leader>f :ClangFormat<CR>
 
 "YCM
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_always_populate_location_list = 1
 " Apply YCM FixIt
@@ -69,6 +68,11 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
+
+"Airline
+set laststatus=2
+set t_Co=256
+set noshowmode
 
 if has("gui_running")
   if has("gui_gtk2") || has("gui_gtk3")
