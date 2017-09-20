@@ -1,10 +1,33 @@
 set nocompatible
 set encoding=utf-8
+
+" To disable a plugin, add it's bundle name to the following list
+" let g:pathogen_disabled = []
+" call add(g:pathogen_disabled, 'vim-syntax-extra')
+
 execute pathogen#infect("bundle/{}", "/media/vim/{}")
 syntax on
 filetype plugin indent on
 
-"set mouse
+"Colorscheme
+let PaperColor_Theme_Options = {
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
+  \   }
+  \ }"Colorscheme
+set number
+colorscheme PaperColor
+set laststatus=2
+set t_Co=256
+set noshowmode
 set mouse=a
 
 " ESC commands for putty
@@ -52,6 +75,8 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_always_populate_location_list = 1
 " Apply YCM FixIt
 map <F9> :YcmCompleter FixIt<CR>
+" Run YCM generator
+:noremap <Leader>y :YcmGenerateConfig<CR>
 
 "Settings for taglist.vim
 let Tlist_Use_Right_Window=1
@@ -69,21 +94,3 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
 
-"Airline
-set laststatus=2
-set t_Co=256
-set noshowmode
-
-if has("gui_running")
-  if has("gui_gtk2") || has("gui_gtk3")
-      set guifont=Courier\ New\ 14
-        elseif has("gui_photon")
-    set guifont=Courier\ New:s14
-      elseif has("gui_kde")
-          set guifont=Courier\ New/14/-1/5/50/0/0/0/1/0
-    elseif has("x11")
-        set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
-  else
-      set guifont=Courier_New:h14:cDEFAULT
-        endif
-endif
