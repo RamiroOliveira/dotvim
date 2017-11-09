@@ -85,7 +85,7 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 :noremap <Leader>f :ClangFormat<CR>
 
 "YCM
-let g:ycm_confirm_extra_conf = 0
+" let g:ycm_confirm_extra_conf = 0
 let g:ycm_always_populate_location_list = 1
 " Apply YCM FixIt
 map <F9> :YcmCompleter FixIt<CR>
@@ -108,3 +108,5 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
 
+" Python
+nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
