@@ -5,9 +5,12 @@ set encoding=utf-8
 " let g:pathogen_disabled = []
 " call add(g:pathogen_disabled, 'vim-syntax-extra')
 
-execute pathogen#infect("bundle/{}", "/media/vim/{}")
+execute pathogen#infect("bundle/{}", "~/.vimplugins/{}")
 syntax on
 filetype plugin indent on
+
+let g:completor_python_binary = '/usr/bin/python3'
+let g:completor_clang_binary = '/usr/bin/clang'
 
 "Colorscheme
 let PaperColor_Theme_Options = {
@@ -86,11 +89,11 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 "YCM
 " let g:ycm_confirm_extra_conf = 0
-let g:ycm_always_populate_location_list = 1
+" let g:ycm_always_populate_location_list = 1
 " Apply YCM FixIt
-map <F9> :YcmCompleter FixIt<CR>
+" map <F9> :YcmCompleter FixIt<CR>
 " Run YCM generator
-:noremap <Leader>y :YcmGenerateConfig<CR>
+" :noremap <Leader>y :YcmGenerateConfig<CR>
 
 "Settings for taglist.vim
 let Tlist_Use_Right_Window=1
