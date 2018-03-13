@@ -7,7 +7,10 @@ set encoding=utf-8
 
 execute pathogen#infect("bundle/{}", "~/.vimplugins/{}")
 syntax on
+
+"indentation
 filetype plugin indent on
+map <F7> mzgg=G`z
 
 let g:completor_python_binary = '/usr/bin/python3'
 let g:completor_clang_binary = '/usr/bin/clang'
@@ -46,6 +49,8 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+nnoremap <silent> <leader>l :LinuxCodingStyle<cr>
+let g:linuxsty_patterns = [ "/usr/src/", "/linux" ]
 
 " ESC commands for putty
 map <ESC>[D <C-Left>
@@ -75,7 +80,7 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
 
 " Tags
-set tags=tags;
+set tags=./tags;
 noremap <Leader>t :!ctags-proj.sh<CR>
 
 " Tab Navigation
@@ -117,3 +122,28 @@ nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
 if has('gui_running')
   set guifont=Ubuntu\ Mono\ 16
 endif
+
+
+"C++
+
+" Highlighting of class scope is disabled by default. To enable set
+let g:cpp_class_scope_highlight = 1
+
+" Highlighting of member variables is disabled by default. To enable set
+let g:cpp_member_variable_highlight = 1
+
+" Highlighting of class names in declarations is disabled by default. To enable set
+let g:cpp_class_decl_highlight = 1
+
+" There are two ways to highlight template functions. Either
+" let g:cpp_experimental_simple_template_highlight = 1
+" which works in most cases, but can be a little slow on large files. Alternatively set
+let g:cpp_experimental_template_highlight = 1
+" which is a faster implementation but has some corner cases where it doesn't work.
+
+
+" Highlighting of library concepts is enabled by
+let g:cpp_concepts_highlight = 1
+
+" Highlighting of user defined functions can be disabled by
+let g:cpp_no_function_highlight = 1
