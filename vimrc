@@ -62,6 +62,7 @@ map! <ESC>[C <C-Right>
 :map <F3> <nop>
 :map! <F3> <nop>
 noremap <F3> :set list!<CR>
+set listchars+=space:·
 
 " Comments
 "Add spaces after comment delimiters by default
@@ -91,14 +92,6 @@ nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 "Clang
 :noremap <Leader>f :ClangFormat<CR>
-
-"YCM
-" let g:ycm_confirm_extra_conf = 0
-" let g:ycm_always_populate_location_list = 1
-" Apply YCM FixIt
-" map <F9> :YcmCompleter FixIt<CR>
-" Run YCM generator
-" :noremap <Leader>y :YcmGenerateConfig<CR>
 
 "Settings for taglist.vim
 let Tlist_Use_Right_Window=1
@@ -147,3 +140,44 @@ let g:cpp_concepts_highlight = 1
 
 " Highlighting of user defined functions can be disabled by
 let g:cpp_no_function_highlight = 1
+
+"Syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["c","h","cpp"] }
+
+
+" Automatically open, but do not go to (if there are errors) the quickfix /
+" " location list window, or close it when is has become empty.
+" "
+" " Note: Must allow nesting of autocmds to enable any customizations for
+" quickfix
+" " buffers.
+" " Note: Normally, :cwindow jumps to the quickfix window if the command opens
+" it
+" " (but not if it's already open). However, as part of the autocmd, this
+" doesn't
+" " seem to happen.
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+
+" Python Stuff
+"Enable folding
+ 
+set foldmethod=indent
+set foldlevel=99
+
+"Python BP
+nnoremap <F8> :TogglePudbBreakPoint<CR>
+inoremap <F8> <ESC>:TogglePudbBreakPoint<CR>a
