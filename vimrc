@@ -182,7 +182,10 @@ set foldlevel=99
 nnoremap <F8> :TogglePudbBreakPoint<CR>
 inoremap <F8> <ESC>:TogglePudbBreakPoint<CR>a
 
-"
+
 "" Sample command W
-"
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+"" GIT blame
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+
