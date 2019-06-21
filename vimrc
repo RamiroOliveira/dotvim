@@ -181,3 +181,8 @@ set foldlevel=99
 "Python BP
 nnoremap <F8> :TogglePudbBreakPoint<CR>
 inoremap <F8> <ESC>:TogglePudbBreakPoint<CR>a
+
+"
+"" Sample command W
+"
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
