@@ -111,6 +111,8 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Python
 nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+if has('python3')
+endif
 
 if has('gui_running')
   set guifont=Ubuntu\ Mono\ 16
