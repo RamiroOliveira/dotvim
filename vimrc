@@ -34,6 +34,9 @@ set t_Co=256
 set noshowmode
 set mouse=a
 
+" Save as Ctrl-s
+nnoremap <C-s> :w<CR>  
+
 " Kernel dev
 " 80 characters line
 set colorcolumn=81
@@ -122,7 +125,7 @@ autocmd QuickFixCmdPost    l* nested lwindow
 
 " Python Stuff
 "Enable folding
- 
+
 set foldmethod=indent
 set foldlevel=99
 
@@ -262,4 +265,21 @@ let g:ycm_show_detailed_diag_in_popup=1
 let g:ycm_show_diagnostics_ui = 1
 nmap <leader>D <plug>(YCMHover)
 
-nnoremap <C-LeftMouse> :YcmCompleter GoTo<CR>
+
+" nnoremap <C-LeftMouse> <LeftMouse>:YcmCompleter GoTo<CR>
+nnoremap <C-LeftMouse> <LeftMouse>:YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <C-G> :YcmGenerateConfig <CR>
+
+function! s:CustomizeYcmQuickFixWindow()
+  " Move the window to the top of the screen.
+  wincmd K
+  " Set the window height to 5.
+  5wincmd _
+endfunction
+
+autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()
+
+"Color Coded
+"
+let g:color_coded_enabled = 1
+nnoremap <C-C> :CCGenerateConfig <CR>
