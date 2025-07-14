@@ -27,10 +27,14 @@ map <F7> mzgg=G`z
 "   \     }
 "   \   }
 "   \ }"Colorscheme
-set number
+"
+set t_Co=256   " This is may or may not needed.
+
+set background=light
 colorscheme PaperColor
+
+set number
 set laststatus=2
-set t_Co=256
 set noshowmode
 set mouse=a
 
