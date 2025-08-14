@@ -3,7 +3,7 @@ set encoding=utf-8
 
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_blacklist = []
-if v:version < '910' || !has('python3')
+if v:version <= '900' || !has('python3')
     call add(g:pathogen_blacklist, 'YouCompleteMe')
 endif
 
