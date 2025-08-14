@@ -2,9 +2,10 @@ set nocompatible
 set encoding=utf-8
 
 " To disable a plugin, add it's bundle name to the following list
-" let g:pathogen_disabled = []
 let g:pathogen_blacklist = []
-" call add(g:pathogen_disabled, 'syntastic', 'completor.vim')
+if v:version < '910' || !has('python')
+    call add(g:pathogen_blacklist, 'YouCompleteMe')
+endif
 
 execute pathogen#infect("bundle/{}", "~/.vimplugins/{}")
 syntax on
